@@ -8,7 +8,7 @@ export const PatientRegistrationWrapper = styled.div`
         background-color: #ffffff;
         
         width: 600px;
-        height: 500px;
+        height: 600px;
         
         margin: 3em auto;
         border-radius: 1.5em;

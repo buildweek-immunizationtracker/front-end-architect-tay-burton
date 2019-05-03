@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 
+
 // Requires:
 // 1. It has the API as <Route />
 // 2. It renders a <Route /> and passes all the props through to Route
@@ -24,4 +25,6 @@ const UserPrivateRoute = ({ component: Component, ...therest }) => {
   );
 };
 
+
 export default UserPrivateRoute;
+

@@ -17,6 +17,19 @@ import {
   PATIENTACCOUNTCREATE_FAILURE
 } from "../actions/registrationActions";
 
+// Granting Access to Providers
+import{
+  GETPROVIDERLIST_START,
+  GETPROVIDERLIST_SUCCESS,
+  GETPROVIDERLIST_FAILURE,
+  INITIATE_CONSENT,
+  CONSENT_ACKNOWLEDGED,
+  CONSENT_REJECTED,
+  INITIATE_REMOVE_CONSENT,
+  CONSENT_REMOVAL_ACKNOWLEDGED,
+  CONSENT_REMOVAL_REJECTED
+} from '../actions/grantAccessActions'
+
 const initialState = {
   // Common
   error: "",
@@ -28,8 +41,16 @@ const initialState = {
   addingMedicalUser: false,
   userListPatient: [],
   addingPatient: false,
+
+  // from granting access
+  providerList:[],
+  fetchingProviders: false,
+  authorizedProviderList:[],
+  givingAuthorization: false,
+  removingAuthorization: false,
   logout: false,
   user:[]
+
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -65,7 +86,7 @@ const friendsReducer = (state = initialState, action) => {
         addingMedicalUser: false,
         error: action.payload
       };
-
+//~~~~~~~~~~~~~~~~PATIENT ONBOARDING~~~~~~~~~~~~~~~~~~~`
       case PATIENTACCOUNTCREATE_START:
       return {
         ...state,
@@ -83,6 +104,71 @@ const friendsReducer = (state = initialState, action) => {
         addingPatient: false,
         error: action.payload
       };
+
+//~~~~~~~~~~~~~~~~Granting Access ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //getting list of providers to give authorizaton to
+    
+    case GETPROVIDERLIST_START:
+      return {
+        ...state,
+        fetchingProviders: true
+      };
+    case GETPROVIDERLIST_SUCCESS:
+      return {
+        ...state,
+        fetchingProviders: false,
+        providerList: [...this.providerList, ...action.payload]
+      };
+    case GETPROVIDERLIST_FAILURE:
+      return {
+        ...state,
+        fetchingProviders: false,
+        error: action.payload
+      };
+    
+    //giving consent tp modify info
+      
+    case INITIATE_CONSENT:
+      return {
+        ...state,
+        givingAuthorization: true
+      };
+    case CONSENT_ACKNOWLEDGED:
+      return {
+        ...state,
+        givingAuthorization: false,
+        authorizedProviderList: [...this.authorizedProviderList, ...action.payload]
+      };
+    case CONSENT_REJECTED:
+      return {
+        ...state,
+        givingAuthorization: false,
+        error: action.payload
+      };
+    
+      //removing consent tp modify info
+    
+    case INITIATE_REMOVE_CONSENT:
+      return {
+      ...state,
+      removingAuthorization: true
+    };
+    case CONSENT_REMOVAL_ACKNOWLEDGED:
+      return {
+      ...state,
+      removingAuthorization: false,
+      authorizedProviderList: [ ...action.payload]
+      //if authorizedproviderlist includes 
+      //action.payload(a provider id) then 
+      //remove from array???????????
+    };
+    case CONSENT_REMOVAL_REJECTED:
+      return {
+      ...state,
+      removingAuthorization: false,
+      error: action.payload
+    };
+
       case FETCH_DATA_START:
       return {
         ...state,
@@ -97,6 +183,7 @@ const friendsReducer = (state = initialState, action) => {
         fetchingData: false,
         user: action.payload
       }
+
 
     default:
       return state;
