@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 
 import { PatientWrapper } from './PNavbarWrapper'
-
+import { Redirect } from "react-router-dom";
 
 class PatientHome extends Component {
 
@@ -28,6 +28,10 @@ class PatientHome extends Component {
 
 
   render() {
+    if (this.props.user.providerId  ) {
+      return <Redirect to='/doctorhub' />
+    }
+    
     return (
       <PatientWrapper>
         <PatientNav />
