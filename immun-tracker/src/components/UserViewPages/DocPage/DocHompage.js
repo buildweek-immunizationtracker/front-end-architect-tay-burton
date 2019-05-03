@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
 import DocNav from "./DocNav";
+
+import { getData } from "../../../actions/actions";
 
 import {
     Jumbotron,
@@ -16,8 +18,21 @@ import {
 import {DocWrapper} from "./DocWrapper";
 import DocFooter from "./DocFooter";
 
+import { Redirect } from "react-router-dom";
+
+
+
 class DocHompage extends Component {
+
+
+  componentDidMount() {
+    this.props.getData();
+  }
+
     render() {
+      if (!this.props.user.providerId ) {
+        return <Redirect to='/patienthub' />
+      }
         return (
                 <DocWrapper>
                 <DocNav/>
@@ -96,4 +111,14 @@ class DocHompage extends Component {
     }
 }
 
-export default DocHompage;
+const mapStateToProps = ({user,fetchingData}) => {
+  return {
+    user,
+    fetchingData
+  };
+};
+
+export default connect(
+  mapStateToProps,
+    {getData}
+)(DocHompage);
