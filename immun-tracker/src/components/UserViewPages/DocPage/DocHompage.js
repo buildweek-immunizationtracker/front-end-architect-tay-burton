@@ -122,3 +122,4 @@ export default connect(
   mapStateToProps,
     {getData}
 )(DocHompage);
+  
