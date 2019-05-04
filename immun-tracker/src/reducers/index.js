@@ -4,6 +4,13 @@ import {
     FETCH_DATA_START,
     FETCH_DATA_SUCCESS,
   
+    FETCHING_PATIENT,
+    FETCHING_PATIENT_SUCCESS,
+    FETCHING_PATIENT_FAILURE,
+
+    FETCHING_IMMUNIZATION,
+    FETCHING_IMMUNIZATION_SUCCESS,
+    FETCHING_IMMUNIZATION_FAILURE
   } from "../actions/actions";
 
 // Registration Actions
@@ -48,9 +55,16 @@ const initialState = {
   authorizedProviderList:[],
   givingAuthorization: false,
   removingAuthorization: false,
-  logout: false,
-  user:[]
-
+  
+  //user data
+  user:[],
+  
+  //patient 
+  patients:[],
+  fetchingPatientData: false,
+  //FETCHING IMMUNIZATION
+  immunization:[],
+  fetchingImmunization:false
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -176,7 +190,6 @@ const friendsReducer = (state = initialState, action) => {
         fetchingData: true
       };
       case FETCH_DATA_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         error: "",
@@ -184,7 +197,46 @@ const friendsReducer = (state = initialState, action) => {
         user: action.payload
       }
 
-
+  //Patient Data Fetch 
+   case FETCHING_PATIENT: 
+      return {
+        ...state,
+        error: "",
+        fetchingPatientData: true
+      };
+      case FETCHING_PATIENT_SUCCESS:
+        return {
+          ...state,
+        error: "",
+        fetchingPatientData: false,
+        patients: action.payload
+        };
+        case FETCHING_PATIENT_FAILURE:
+        return {
+          ...state,
+          fetchingPatientData: false,
+          error: action.payload
+        };
+        //FETCHING IMMUNIZATION
+        case FETCHING_IMMUNIZATION: 
+      return {
+        ...state,
+        error: "",
+        fetchingImmunization: true
+      };
+      case FETCHING_IMMUNIZATION_SUCCESS:
+        return {
+          ...state,
+        error: "",
+        fetchingImmunization: false,
+        immunization: action.payload
+        };
+        case FETCHING_IMMUNIZATION_FAILURE:
+        return {
+          ...state,
+          fetchingImmunization: false,
+          error: action.payload
+        };
     default:
       return state;
   }

@@ -35,7 +35,7 @@ export const getData = () => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
-       console.log(res.data);
+       console.log(res.data.user);
       dispatch({
         type: FETCH_DATA_SUCCESS,
         payload: res.data.user
@@ -50,3 +50,55 @@ export const getData = () => dispatch => {
     });
 };
  
+export const FETCHING_PATIENT = "FETCHING_PATIENT";
+export const FETCHING_PATIENT_SUCCESS = "FETCHING_PATIENT_SUCCESS";
+export const FETCHING_PATIENT_FAILURE = "FETCHING_PATIENT_FAILURE";
+
+
+export const getPatient = () => dispatch => {
+    dispatch({ type: FETCHING_PATIENT });
+    axios
+      .get(`https://infinite-castle-77802.herokuapp.com/patients`, {
+        headers: { Authorization: localStorage.getItem("token") }
+      })
+      .then((res) => {
+        console.log(res.data)
+        dispatch({
+          type: FETCHING_PATIENT_SUCCESS,
+          payload: res.data.patients
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: FETCHING_PATIENT_FAILURE,
+          payload: err
+        });
+      });
+  };
+
+
+  export const FETCHING_IMMUNIZATION = "FETCHING_IMMUNIZATION";
+  export const FETCHING_IMMUNIZATION_SUCCESS = "FETCHING_IMMUNIZATION_SUCCESS";
+  export const FETCHING_IMMUNIZATION_FAILURE = "FETCHING_IMMUNIZATION_FAILURE";
+
+  export const getImmunization = id => dispatch => {
+    dispatch({ type: FETCHING_IMMUNIZATION });
+    axios
+      .get(`https://infinite-castle-77802.herokuapp.com/patients/${id}/immunizations`, {
+        headers: { Authorization: localStorage.getItem("token") }
+      })
+      .then((res) => {
+        console.log(res.data)
+        dispatch({
+          type: FETCHING_IMMUNIZATION_SUCCESS,
+          payload: res.data.history
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: FETCHING_IMMUNIZATION_FAILURE,
+          payload: err
+        });
+      });
+  };
+
