@@ -32,9 +32,9 @@ export const CONSENT_REJECTED = 'CONSENT_REJECTED'
 export const giveProviderConsent = (providerId) => dispatch => {
     dispatch({ type: INITIATE_CONSENT })
     axios
-      //res.data.payload???
+      //are we giving token or adding patientId to the objarray
       .post(`https://infinite-castle-77802.herokuapp.com/patients/${providerId}/consent`, providerId)
-      .then(res => dispatch({ type: CONSENT_ACKNOWLEDGED, payload: res.data.success }))
+      .then(res => dispatch({ type: CONSENT_ACKNOWLEDGED, payload: res.data.success.patientId }))
       .catch(err => dispatch({ type: CONSENT_REJECTED, payload: err }));
 }
 
@@ -49,6 +49,6 @@ export const removeProviderConsent = (providerId) => dispatch => {
     axios
       //res.data.payload?
       .delete(`https://infinite-castle-77802.herokuapp.com/patients/${providerId}/consent`)
-      .then(res => dispatch({ type: CONSENT_REMOVAL_ACKNOWLEDGED, payload: res.data.providers }))
+      .then(res => dispatch({ type: CONSENT_REMOVAL_ACKNOWLEDGED, payload: res.data.success.patientId }))
       .catch(err => dispatch({ type: CONSENT_REMOVAL_REJECTED, payload: err }));
 }

@@ -20,7 +20,7 @@ class GrantAccessView extends React.Component {
     // if (this.props.fetchingProviders) {
     //   <h3>Loading our list of providers...</h3>
     // }
-    console.log(this.providerList)
+    // console.log(this.providerList)
     return (
       <div>
        List of providers:
@@ -30,13 +30,13 @@ class GrantAccessView extends React.Component {
   }
 }
 //state as argument?
-const mapStateToProps = ({providerList, fetchingProviders}) => {
+const mapStateToProps = (state) => {
   return{
-    // providerList: state.providerList,
-    // error: state.error,
-    // fetchingProviders: state.fetchingProviders,
-    providerList,
-    fetchingProviders
+    providerList: state.providerList,
+    error: state.error,
+    fetchingProviders: state.fetchingProviders,
+    // providerList,
+    // fetchingProviders
   } 
 };
 
