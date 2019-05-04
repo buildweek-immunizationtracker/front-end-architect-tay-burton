@@ -117,7 +117,9 @@ const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingProviders: false,
-        providerList: [...this.providerList, ...action.payload]
+        providerList: [...action.payload] 
+        //[...this.providerList, ...action.payload] 
+        //why this no work doe
       };
     case GETPROVIDERLIST_FAILURE:
       return {

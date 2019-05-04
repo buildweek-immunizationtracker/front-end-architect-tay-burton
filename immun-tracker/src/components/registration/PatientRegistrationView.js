@@ -2,7 +2,7 @@ import React from "react";
 //import { NavLink } from 'react-router-dom'
 import { connect } from "react-redux";
 import { PatientRegistrationWrapper } from "./PatientRegistrationWrapper";
-//import { createPatientAccount } from '../../actions/registrationActions'
+import { createPatientAccount } from '../../actions/registrationActions'
 import { Link } from "react-router-dom"
 
 class PatientRegistrationView extends React.Component {
@@ -115,5 +115,5 @@ class PatientRegistrationView extends React.Component {
   
   export default connect(
     mapStateToProps,
-   // { createPatientAccount }
+   { createPatientAccount }
   )(PatientRegistrationView);

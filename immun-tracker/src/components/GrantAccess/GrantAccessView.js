@@ -8,9 +8,9 @@ import List from './List';
 
 
 class GrantAccessView extends React.Component {
-    constructor() {
-        super();
-    }
+    // constructor() {
+    //     super();
+    // }
 
   componentDidMount() {
     this.props.fetchProviderList();
@@ -20,20 +20,23 @@ class GrantAccessView extends React.Component {
     // if (this.props.fetchingProviders) {
     //   <h3>Loading our list of providers...</h3>
     // }
+    console.log(this.providerList)
     return (
       <div>
-        <List list={this.props.list} />
+       List of providers:
+        <List list={this.props.providerList} />
       </div>
     );
   }
 }
-
-const mapStateToProps = state => {
+//state as argument?
+const mapStateToProps = ({providerList, fetchingProviders}) => {
   return{
-    providerList: state.providerList,
-    error: state.error,
-    fetchingProviders: state.fetchingProviders,
-
+    // providerList: state.providerList,
+    // error: state.error,
+    // fetchingProviders: state.fetchingProviders,
+    providerList,
+    fetchingProviders
   } 
 };
 

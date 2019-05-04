@@ -10,8 +10,16 @@ export const fetchProviderList = () => dispatch => {
     dispatch({ type: GETPROVIDERLIST_START })
     axios
       //res.data.payload??
-      .get("https://infinite-castle-77802.herokuapp.com/providers")
-      .then(res => dispatch({ type: GETPROVIDERLIST_SUCCESS, payload: res.data.providers }))
+      .get("https://infinite-castle-77802.herokuapp.com/providers",  {
+        headers: { Authorization: localStorage.getItem("token") }})
+      
+      .then(res => { 
+        console.log(res.data); 
+        dispatch({ 
+          type: GETPROVIDERLIST_SUCCESS, 
+          payload: res.data.providers 
+        });
+      })
       .catch(err => dispatch({ type: GETPROVIDERLIST_FAILURE, payload: err }));
 }
 
