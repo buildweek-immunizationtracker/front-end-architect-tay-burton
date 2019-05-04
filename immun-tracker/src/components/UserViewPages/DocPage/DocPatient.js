@@ -26,7 +26,7 @@ class DocPatient extends Component {
       </div>
     );
   }
-}
+} 
 
 const mapStateToProps = ({ immunization }) => {
     return {
