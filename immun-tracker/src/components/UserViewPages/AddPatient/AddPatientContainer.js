@@ -44,6 +44,7 @@ export class AddPatientView extends React.Component {
     postPatient(newPatient)
       .then(() => {
         console.log("success!");
+        this.props.history.push('/patienthub');
       })
       .catch(error => {
         console.error(error);
