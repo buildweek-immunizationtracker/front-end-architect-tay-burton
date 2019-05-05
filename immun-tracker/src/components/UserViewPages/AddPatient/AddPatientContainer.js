@@ -56,13 +56,16 @@ export class AddPatientView extends React.Component {
       birthDate
     };
 
+    this.setState({ isSubmitting: true });
     postPatient(newPatient)
       .then(() => {
         console.log("success!");
         this.props.history.push("/patienthub");
+        this.setState({ isSubmitting: false })
       })
       .catch(error => {
         console.error(error);
+        this.setState({ isSubmitting: false })
       });
   };
 
@@ -88,10 +91,12 @@ export class AddPatientView extends React.Component {
   disableSubmitButton = () => {
     // Returns true if any input is not filled in or date selected is invalid
     // Meant to go to 'disabled' attribute on the submit button
-    return !(
-      this.isFieldFilled("firstName") &&
-      this.isFieldFilled("lastName") &&
-      this.isBirthDateValid()
+    return (
+      !(
+        this.isFieldFilled("firstName") &&
+        this.isFieldFilled("lastName") &&
+        this.isBirthDateValid()
+      ) || this.state.isSubmitting
     );
   };
 
@@ -171,7 +176,7 @@ export class AddPatientView extends React.Component {
               disabled={this.disableSubmitButton()}
               type="submit"
             >
-              Submit
+              {this.state.isSubmitting ? "Submitting" : "Submit"}
             </Button>
             <StyledLink to="/patienthub">Go Back</StyledLink>
           </ButtonDiv>
