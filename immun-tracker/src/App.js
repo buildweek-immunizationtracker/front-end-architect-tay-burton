@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" exact render={props => <Redirect to="/login" />} /> 
+          <Route exact path="/" exact render={props => <Redirect to="/login" {...props} />} /> 
           <Route path="/login" exact component={Login} />
           <Route path="/register-provider" exact component={MedicalRegistrationView} />
           <Route path = "/register-patient" exact component={PatientRegistrationView} />

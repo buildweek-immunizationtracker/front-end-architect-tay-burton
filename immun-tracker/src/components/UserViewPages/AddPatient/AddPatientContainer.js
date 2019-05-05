@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // Components
+import PatientNav from '../PatientPage/PatientNav';
 import DatePicker from "react-datepicker";
 // API Helper
 import { postPatient } from "./apiCalls";
@@ -104,6 +105,7 @@ export class AddPatientView extends React.Component {
 
     return (
       <div>
+        <PatientNav />
         <form onSubmit={this.submitPatient}>
           <label htmlFor="firstName">First Name</label>
           <input
