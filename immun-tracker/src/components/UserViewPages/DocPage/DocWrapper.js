@@ -73,3 +73,17 @@ export const Footer = styled.div`
         }
        }
 `
+
+export const Patient = styled.div`
+.s{
+  display: flex;
+  justify-content: center;
+}
+.card-body {display: flex;
+justify-content: center;
+padding-top: 50px;
+height: auto;
+width: 50%;
+margin: 50px;
+}
+`

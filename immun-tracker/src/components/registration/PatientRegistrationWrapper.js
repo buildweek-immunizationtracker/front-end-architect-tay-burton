@@ -48,7 +48,7 @@ export const PatientRegistrationWrapper = styled.div`
         border: 2px solid #6666ff;
         border-radius: 20px;
         box-sizing: border-box;
-        border: 2px solid #ccccff
+        border: 2px solid #ccccff;
         color:#e6e6ff;
         background: #004d00;
         padding: 10px 30px;
