@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+
+
 
 // Requires:
 // 1. It has the API as <Route />
@@ -24,4 +25,6 @@ const UserPrivateRoute = ({ component: Component, ...therest }) => {
   );
 };
 
+
 export default UserPrivateRoute;
+

@@ -59,7 +59,6 @@ class PatientRegistrationView extends React.Component {
               value={this.state.fullName}
               name="fullName"
             />
-                   
             <input
               className = "input"
               type = "text"
@@ -67,6 +66,14 @@ class PatientRegistrationView extends React.Component {
               placeholder="Username"
               value={this.state.username}
               name="username"
+            />
+            <input
+              className = "input"
+              type = "text"
+              onChange={this.handleInput}
+              placeholder="Email Address"
+              value={this.state.email}
+              name="email"
             />
             <input
               className = "input"
@@ -86,7 +93,7 @@ class PatientRegistrationView extends React.Component {
             
             <div className = "alreadyRegistered">
               <p>Already Registered? </p>
-              <a className="redirectLogin" href="#"> Login</a>
+              <a className="redirectLogin" href="/"> Login</a>
             </div>
             <div className = "alreadyRegistered">
               <p>Are you a medical provider? </p>

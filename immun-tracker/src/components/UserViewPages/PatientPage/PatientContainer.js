@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PatientNav from "./PatientNav";
-import Footer from "./PatientFooter";
+import Footer from './PatientFooter'
+import { getData } from "../../../actions/actions";
 
 //Redux
 import { connect } from "react-redux";
@@ -17,15 +18,26 @@ import {
   CardSubtitle
 } from "reactstrap";
 
-import { PatientWrapper } from "./PNavbarWrapper";
+import { PatientWrapper } from './PNavbarWrapper'
+import { Redirect } from "react-router-dom";
 
 class PatientHome extends Component {
+
+  componentDidMount() {
+    this.props.getData();
+  }
+
+
   render() {
+    if (this.props.user.providerId  ) {
+      return <Redirect to='/doctorhub' />
+    }
+    
     return (
       <PatientWrapper>
         <PatientNav />
         <Jumbotron>
-          <h1 className="display-3">Hello,</h1>
+          <h1 className="display-3">Hello, {this.props.user.username}</h1>
           <p className="lead">
             Welcome to the Immunization Tracker’s patient hub. <br />
             Here you will be able to get up to date with news of immunizations
@@ -106,13 +118,15 @@ class PatientHome extends Component {
   }
 }
 
-const mapStateToProps = state => {
+
+const mapStateToProps = ({user,fetchingData}) => {
   return {
-    //
+    user,
+    fetchingData
   };
 };
 
 export default connect(
-  mapStateToProps
-  //
+  mapStateToProps,
+    {getData}
 )(PatientHome);
