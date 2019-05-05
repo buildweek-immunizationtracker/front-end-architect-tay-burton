@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 // Components
-import PatientNav from '../PatientPage/PatientNav';
+import PatientNav from "../PatientPage/PatientNav";
 import DatePicker from "react-datepicker";
 // Styled Compnents
-import { AddPatientDiv, AddPatientForm, AddPatientInput, AddPatientLabel, AddPatientFormGroup } from './styles';
+import {
+  AddPatientDiv,
+  AddPatientForm,
+  AddPatientInput,
+  AddPatientLabel,
+  AddPatientFormGroup,
+  ValidationDiv
+} from "./styles";
 // API Helper
 import { postPatient } from "./apiCalls";
 
@@ -47,7 +54,7 @@ export class AddPatientView extends React.Component {
     postPatient(newPatient)
       .then(() => {
         console.log("success!");
-        this.props.history.push('/patienthub');
+        this.props.history.push("/patienthub");
       })
       .catch(error => {
         console.error(error);
@@ -108,8 +115,8 @@ export class AddPatientView extends React.Component {
     return (
       <AddPatientDiv>
         <PatientNav />
-        <h2>Add a New Patient</h2>
         <AddPatientForm onSubmit={this.submitPatient}>
+          <h2>Add a New Patient</h2>
           <AddPatientFormGroup>
             <AddPatientLabel htmlFor="firstName">First Name</AddPatientLabel>
             <AddPatientInput
@@ -118,11 +125,11 @@ export class AddPatientView extends React.Component {
               onChange={this.handleInputChange}
               onBlur={this.setBlur}
             />
-            <div>
+            <ValidationDiv>
               {this.showErrorMessage("firstName")
                 ? "First Name is required!"
                 : null}
-            </div>
+            </ValidationDiv>
           </AddPatientFormGroup>
 
           <AddPatientFormGroup>
@@ -133,11 +140,11 @@ export class AddPatientView extends React.Component {
               onChange={this.handleInputChange}
               onBlur={this.setBlur}
             />
-            <div>
+            <ValidationDiv>
               {this.showErrorMessage("lastName")
                 ? "Last Name is required!"
                 : null}
-            </div>
+            </ValidationDiv>
           </AddPatientFormGroup>
 
           <AddPatientFormGroup>
@@ -146,12 +153,16 @@ export class AddPatientView extends React.Component {
               name="birthDate"
               selected={birthDate} // this works like the 'value' in input
               onChange={this.changeDate} // accepts onChange function which
-            // would update state
+              // would update state
             />
-            <div>{!this.isBirthDateValid() ? "Date invalid!" : null}</div>
+            <ValidationDiv>
+              {!this.isBirthDateValid() ? "Date invalid!" : null}
+            </ValidationDiv>
           </AddPatientFormGroup>
 
-          <button disabled={this.disableSubmitButton()} type="submit">Submit</button>
+          <button disabled={this.disableSubmitButton()} type="submit">
+            Submit
+          </button>
         </AddPatientForm>
       </AddPatientDiv>
     );
