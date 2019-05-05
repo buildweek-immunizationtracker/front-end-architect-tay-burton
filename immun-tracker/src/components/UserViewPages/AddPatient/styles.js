@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+// Components
+import { Link } from 'react-router-dom';
 
 const commonInputCSS = `
     width: 100%;
@@ -48,4 +50,16 @@ export const ValidationDiv = styled.div`
     margin-top: 1rem;
     font-style: italic;
     font-weight: bolder;
+`;
+
+export const ButtonDiv = styled.div`
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const StyledLink = styled(Link)`
+    margin-left: 1rem;
 `;

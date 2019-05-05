@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // Components
 import PatientNav from "../PatientPage/PatientNav";
 import DatePicker from "react-datepicker";
@@ -9,8 +10,11 @@ import {
   AddPatientInput,
   AddPatientLabel,
   AddPatientFormGroup,
-  ValidationDiv
+  ValidationDiv,
+  ButtonDiv,
+  StyledLink
 } from "./styles";
+import { Button } from "reactstrap";
 // API Helper
 import { postPatient } from "./apiCalls";
 
@@ -24,7 +28,8 @@ export class AddPatientView extends React.Component {
     blurred: {
       firstName: false,
       lastName: false
-    }
+    },
+    isSubmitting: false
   };
 
   changeDate = date => {
@@ -160,9 +165,16 @@ export class AddPatientView extends React.Component {
             </ValidationDiv>
           </AddPatientFormGroup>
 
-          <button disabled={this.disableSubmitButton()} type="submit">
-            Submit
-          </button>
+          <ButtonDiv>
+            <Button
+              color="primary"
+              disabled={this.disableSubmitButton()}
+              type="submit"
+            >
+              Submit
+            </Button>
+            <StyledLink to="/patienthub">Go Back</StyledLink>
+          </ButtonDiv>
         </AddPatientForm>
       </AddPatientDiv>
     );
