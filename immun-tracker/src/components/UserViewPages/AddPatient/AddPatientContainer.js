@@ -2,6 +2,8 @@ import React, { useState } from "react";
 // Components
 import PatientNav from '../PatientPage/PatientNav';
 import DatePicker from "react-datepicker";
+// Styled Compnents
+import { AddPatientDiv, AddPatientForm, AddPatientInput, AddPatientLabel, AddPatientFormGroup } from './styles';
 // API Helper
 import { postPatient } from "./apiCalls";
 
@@ -104,44 +106,54 @@ export class AddPatientView extends React.Component {
     const { firstName, lastName, birthDate } = this.state;
 
     return (
-      <div>
+      <AddPatientDiv>
         <PatientNav />
-        <form onSubmit={this.submitPatient}>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            name="firstName"
-            value={firstName}
-            onChange={this.handleInputChange}
-            onBlur={this.setBlur}
-          />
-          <div>
-            {this.showErrorMessage("firstName")
-              ? "First Name is required!"
-              : null}
-          </div>
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            name="lastName"
-            value={lastName}
-            onChange={this.handleInputChange}
-            onBlur={this.setBlur}
-          />
-          <div>
-            {this.showErrorMessage("lastName")
-              ? "Last Name is required!"
-              : null}
-          </div>
-          <label htmlFor="birthDate">Birth Date</label>
-          <DatePicker
-            name="birthDate"
-            selected={birthDate} // this works like the 'value' in input
-            onChange={this.changeDate} // accepts onChange function which
+        <h2>Add a New Patient</h2>
+        <AddPatientForm onSubmit={this.submitPatient}>
+          <AddPatientFormGroup>
+            <AddPatientLabel htmlFor="firstName">First Name</AddPatientLabel>
+            <AddPatientInput
+              name="firstName"
+              value={firstName}
+              onChange={this.handleInputChange}
+              onBlur={this.setBlur}
+            />
+            <div>
+              {this.showErrorMessage("firstName")
+                ? "First Name is required!"
+                : null}
+            </div>
+          </AddPatientFormGroup>
+
+          <AddPatientFormGroup>
+            <AddPatientLabel htmlFor="lastName">Last Name</AddPatientLabel>
+            <AddPatientInput
+              name="lastName"
+              value={lastName}
+              onChange={this.handleInputChange}
+              onBlur={this.setBlur}
+            />
+            <div>
+              {this.showErrorMessage("lastName")
+                ? "Last Name is required!"
+                : null}
+            </div>
+          </AddPatientFormGroup>
+
+          <AddPatientFormGroup>
+            <AddPatientLabel htmlFor="birthDate">Birth Date</AddPatientLabel>
+            <DatePicker
+              name="birthDate"
+              selected={birthDate} // this works like the 'value' in input
+              onChange={this.changeDate} // accepts onChange function which
             // would update state
-          />
-          <div>{!this.isBirthDateValid() ? "Date invalid!" : null}</div>
+            />
+            <div>{!this.isBirthDateValid() ? "Date invalid!" : null}</div>
+          </AddPatientFormGroup>
+
           <button disabled={this.disableSubmitButton()} type="submit">Submit</button>
-        </form>
-      </div>
+        </AddPatientForm>
+      </AddPatientDiv>
     );
   }
 }
