@@ -139,7 +139,7 @@ const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         givingAuthorization: false,
-        authorizedProviderList: [...this.authorizedProviderList, ...action.payload]
+        authorizedProviderList: [action.payload]
       };
     case CONSENT_REJECTED:
       return {

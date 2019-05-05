@@ -29,13 +29,20 @@ export const INITIATE_CONSENT= 'INITIATE_CONSENT'
 export const CONSENT_ACKNOWLEDGED = 'CONSENT_ACKNOWLEDGED'
 export const CONSENT_REJECTED = 'CONSENT_REJECTED'
 
-export const giveProviderConsent = (providerId) => dispatch => {
-    dispatch({ type: INITIATE_CONSENT })
+export const giveProviderConsent = (patientId, providerId) => dispatch => {
+    console.log(patientId)  
+  dispatch({ type: INITIATE_CONSENT })
     axios
-      //are we giving token or adding patientId to the objarray
-      .post(`https://infinite-castle-77802.herokuapp.com/patients/${providerId}/consent`, providerId)
-      .then(res => dispatch({ type: CONSENT_ACKNOWLEDGED, payload: res.data.success.patientId }))
+      .post(`https://infinite-castle-77802.herokuapp.com/patients/${patientId}/consent`, 
+      {providerId },{
+        headers: { Authorization: localStorage.getItem("token") }
+      })
+      .then(res => 
+        dispatch({ type: CONSENT_ACKNOWLEDGED, payload: res.data.success.providerId 
+         })) 
+         
       .catch(err => dispatch({ type: CONSENT_REJECTED, payload: err }));
+     
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~`removing authorization from a provider to modify patient information
