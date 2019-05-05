@@ -86,4 +86,9 @@ height: auto;
 width: 50%;
 margin: 50px;
 }
+.imun{
+  margin: 20px;
+  border: 1px solid black;
+  width: 50%
+}
 `

@@ -46,7 +46,7 @@ class DocHompage extends Component {
           </p>
           <hr className="my-2" />
           <p className="lead">
-            <Button color="primary"><Link to={`/doctorhub/${this.props.user.id}`}>View Patients</Link></Button>
+            <Button color="primary"><Link to={`/doctorhub/patients`}>View Patients</Link></Button>
           </p>
         </Jumbotron>
         <div className="cardContainer">

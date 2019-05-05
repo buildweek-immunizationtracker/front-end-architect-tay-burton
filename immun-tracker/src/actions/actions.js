@@ -102,3 +102,27 @@ export const getPatient = () => dispatch => {
       });
   };
 
+  export const POST_IMMUNIZATION = "POST_IMMUNIZATION";
+  export const POST_IMMUNIZATION_SUCCESS = "POST_IMMUNIZATION_SUCCESS";
+  export const POST_IMMUNIZATION_FAILURE = "POST_IMMUNIZATION_FAILURE";
+
+
+  export const postImmunization = ( id, creds) => dispatch => {
+    dispatch({ type: POST_IMMUNIZATION });
+    axios
+      .post(`https://infinite-castle-77802.herokuapp.com/patients/${id}/immunizations`, creds, {
+        headers: { Authorization: localStorage.getItem("token") }
+      })
+      .then((res) => {
+        dispatch({
+          type: POST_IMMUNIZATION_SUCCESS,
+          payload: res.data.history
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: POST_IMMUNIZATION_FAILURE,
+          payload: err
+        });
+      });
+  };
