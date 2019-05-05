@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getData, getPatient } from "../../../actions/actions";
+import { getPatient } from "../../../actions/actions";
 import DocNav from "./DocNav";
 import DocPatient from "./DocPatient";
 
@@ -10,7 +10,7 @@ class DocPatientView extends Component {
  
 
   componentDidMount() {
-    this.props.getData();
+    
     this.props.getPatient();
   }
 
@@ -31,15 +31,14 @@ class DocPatientView extends Component {
   }
 }
 
-const mapStateToProps = ({ user, fetchingData, patients }) => {
+const mapStateToProps = ({  patients }) => {
   return {
-    user,
+   
     patients,
-    fetchingData
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getData, getPatient }
+  {  getPatient }
 )(DocPatientView);

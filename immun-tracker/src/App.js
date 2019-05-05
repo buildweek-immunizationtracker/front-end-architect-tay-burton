@@ -29,7 +29,7 @@ class App extends Component {
           <UserPrivateRoute path = "/grant-access" exact component={GrantAccessView} />
           <UserPrivateRoute path= "/patienthub" exact component={PatientContainer} />
           <UserPrivateRoute path= "/doctorhub" exact component={DocHomepage} />
-          <UserPrivateRoute path= "/doctorhub/:id" exact component={DocPatientView} />
+          <UserPrivateRoute path= "/doctorhub/patients" exact component={DocPatientView} />
 
         </div>
       </Router>

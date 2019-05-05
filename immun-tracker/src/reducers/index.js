@@ -10,7 +10,11 @@ import {
 
     FETCHING_IMMUNIZATION,
     FETCHING_IMMUNIZATION_SUCCESS,
-    FETCHING_IMMUNIZATION_FAILURE
+    FETCHING_IMMUNIZATION_FAILURE,
+
+    POST_IMMUNIZATION,
+    POST_IMMUNIZATION_SUCCESS,
+    POST_IMMUNIZATION_FAILURE
   } from "../actions/actions";
 
 // Registration Actions
@@ -67,7 +71,7 @@ const initialState = {
   fetchingImmunization:false
 };
 
-const friendsReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     /* --- Login Actions --- */
         case LOGIN_START: {
@@ -237,10 +241,30 @@ const friendsReducer = (state = initialState, action) => {
           fetchingImmunization: false,
           error: action.payload
         };
+        // Post Immuniztion 
+        case POST_IMMUNIZATION:
+        return {
+          ...state,
+          error: "",
+          fetchingImmunization: false,
+        };
+        case POST_IMMUNIZATION_SUCCESS:
+        return {
+          ...state,
+        error: "",
+        fetchingImmunization: false,
+        immunization: action.payload
+        };
+        case POST_IMMUNIZATION_FAILURE:
+        return {
+          ...state,
+          fetchingImmunization: false,
+          error: action.payload
+        };
     default:
       return state;
   }
 
 };
 
-export default friendsReducer;
+export default userReducer;
