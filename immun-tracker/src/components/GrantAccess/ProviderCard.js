@@ -16,16 +16,19 @@ const ProviderCard = props => {
     console.log(props.patientId)
   return (
     <Card>
-      <h4>
-    <p>Provider: {props.provider.name} </p>
-  <p>Provider since: {(props.provider.createdAt)} </p>
-    </h4>
-    
-    <Button color ="primary">
-      <AuthorizeButton providerId={props.provider.id}
-      patientId={props.patientId}
-     />
-    </Button>
+      <CardBody>
+        <CardTitle>
+          <h4>Provider: {props.provider.name} </h4>
+        </CardTitle>
+        <CardSubtitle>
+          Provider since: {(props.provider.createdAt)}
+        </CardSubtitle>
+        <Button color ="primary">
+          <AuthorizeButton providerId={props.provider.id}
+          patientId={props.patientId}
+          />
+        </Button>
+      </CardBody>
     </Card>
   )
 };
