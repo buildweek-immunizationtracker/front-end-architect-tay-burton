@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import img from "./daiga-ellaby-154931-unsplash-min.jpg";
 
 export const PNavbarWrapper = styled.div`
   .navbar {
@@ -24,7 +23,7 @@ export const PNavbarWrapper = styled.div`
 
 export const PatientWrapper = styled.div`
   .jumbotron {
-    background-image: url(${img});
+    
     background-color: #cccccc;
     background-position: center;
     background-attachment: fixed;
