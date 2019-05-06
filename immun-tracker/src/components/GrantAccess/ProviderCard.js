@@ -13,6 +13,7 @@ import {
 
 const ProviderCard = props => {
     // {let date = props.provider.createdAt}
+    console.log(props.patientId)
   return (
     <Card>
       <h4>
@@ -22,7 +23,8 @@ const ProviderCard = props => {
     
     <Button color ="primary">
       <AuthorizeButton providerId={props.provider.id}
-      id={props.patientId} firstName={props.firstName}/>
+      patientId={props.patientId}
+     />
     </Button>
     </Card>
   )

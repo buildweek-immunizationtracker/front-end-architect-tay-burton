@@ -5,10 +5,10 @@ import ProviderCard from "./ProviderCard";
 const List = props => {
   return (
     <div>
-        {/* {console.log(props.list)} */}
+        {console.log(props.patientId)}
       {props.list.map(provider => {
         return <ProviderCard key={provider.id} 
-        provider={provider} />;
+        provider={provider} patientId={props.patientId}/> ;
       })}
     </div>
   );

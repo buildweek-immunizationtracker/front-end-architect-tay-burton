@@ -6,6 +6,10 @@ import { fetchProviderList } from '../../actions/grantAccessActions'
 
 import List from './List';
 
+import {
+  Jumbotron,
+} from "reactstrap";
+
 
 class GrantAccessView extends React.Component {
     // constructor() {
@@ -26,10 +30,12 @@ class GrantAccessView extends React.Component {
     console.log(this.props.match.params)
     return (
       <div>
-      hello {this.props.location.state.firstName}{' '}
-      {this.props.location.state.lastName}
-       {/* List of providers: */}
-        <List list={this.props.providerList} />
+      <Jumbotron>
+        Hello, {this.props.location.state.firstName}{' '}
+        {this.props.location.state.lastName}
+      </Jumbotron>
+       List of providers:
+        <List list={this.props.providerList} patientId={this.props.match.params} />
       </div>
     );
   }

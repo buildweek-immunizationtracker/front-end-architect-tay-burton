@@ -5,9 +5,9 @@ import {
   } from "reactstrap";
 
 function LinktoGrantAccessButton(props){
-    console.log(props.firstName)
-    console.log(props.lastName)
-    console.log(props.patientId)
+    // console.log(props.firstName)
+    // console.log(props.lastName)
+    // console.log(props.patientId)
     return(
         <Link to={{
             pathname:`/grant-access/${props.patientId}`,

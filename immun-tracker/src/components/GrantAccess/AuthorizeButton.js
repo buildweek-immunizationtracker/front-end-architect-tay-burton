@@ -14,12 +14,15 @@ class AuthorizeButton extends React.Component {
 
 
   handleAuthorize = e => {
+    const id = (Object.values(this.props.patientId).toString())
     e.preventDefault();
     this.setState({ authorizationGranted: true });
-    this.props.giveProviderConsent(this.props.providerId)
+    this.props.giveProviderConsent(id, this.props.providerId)
     };
 
   render() {
+    // console.log(`this is the patient${this.props.match.params}`)
+    console.log(Object.values(this.props.patientId).toString())
     return (
       
         <div className="main">
