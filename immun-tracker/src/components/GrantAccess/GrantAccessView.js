@@ -13,17 +13,22 @@ class GrantAccessView extends React.Component {
     // }
 
   componentDidMount() {
+    // const { handle } = this.props.match.params
+    // const { firstName } = this.props.location.state
     this.props.fetchProviderList();
+
   }
 
   render() {
     // if (this.props.fetchingProviders) {
     //   <h3>Loading our list of providers...</h3>
     // }
-    // console.log(this.providerList)
+    console.log(this.props.match.params)
     return (
       <div>
-       List of providers:
+      hello {this.props.location.state.firstName}{' '}
+      {this.props.location.state.lastName}
+       {/* List of providers: */}
         <List list={this.props.providerList} />
       </div>
     );
@@ -35,7 +40,7 @@ const mapStateToProps = (state) => {
     providerList: state.providerList,
     error: state.error,
     fetchingProviders: state.fetchingProviders,
-    // providerList,
+    
     // fetchingProviders
   } 
 };

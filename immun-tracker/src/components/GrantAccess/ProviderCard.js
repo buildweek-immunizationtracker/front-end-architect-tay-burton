@@ -21,7 +21,8 @@ const ProviderCard = props => {
     </h4>
     
     <Button color ="primary">
-      <AuthorizeButton providerId={props.provider.id}/>
+      <AuthorizeButton providerId={props.provider.id}
+      id={props.patientId} firstName={props.firstName}/>
     </Button>
     </Card>
   )
