@@ -45,7 +45,10 @@ class PatientNav extends Component {
       <Collapse isOpen={!this.state.collapsed} navbar>
         <Nav navbar>
           <NavItem>
-            <Link className='link' href="/components/">Add Patient</Link>
+            <Link className='link' to="/addpatient">Add Patient</Link>
+          </NavItem>
+          <NavItem>
+            <Link className='link' to="/user/patients">View Patient</Link>
           </NavItem>
           <NavItem>
             <Link className='link' onClick={this.logout} to='/login'> Logout </Link>
