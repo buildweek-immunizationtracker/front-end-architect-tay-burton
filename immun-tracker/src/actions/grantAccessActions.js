@@ -29,12 +29,11 @@ export const INITIATE_CONSENT= 'INITIATE_CONSENT'
 export const CONSENT_ACKNOWLEDGED = 'CONSENT_ACKNOWLEDGED'
 export const CONSENT_REJECTED = 'CONSENT_REJECTED'
 
-export const giveProviderConsent = (patientId, providerId) => dispatch => {
-    console.log(patientId)  
+export const giveProviderConsent = (id, providerId) => dispatch => {
+    console.log(id)  
   dispatch({ type: INITIATE_CONSENT })
     axios
-      .post(`https://infinite-castle-77802.herokuapp.com/patients/${patientId}/consent`, 
-      {providerId },{
+      .post(`https://infinite-castle-77802.herokuapp.com/patients/${id}/consent`, providerId ,{
         headers: { Authorization: localStorage.getItem("token") }
       })
       .then(res => 
