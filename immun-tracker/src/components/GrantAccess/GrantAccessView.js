@@ -12,6 +12,8 @@ import {
   ListGroupItem,
 } from "reactstrap";
 
+import PatientNav from '../../components/UserViewPages/PatientPage/PatientNav'
+
 
 class GrantAccessView extends React.Component {
     // constructor() {
@@ -32,6 +34,7 @@ class GrantAccessView extends React.Component {
     console.log(this.props.match.params)
     return (
       <div>
+      <PatientNav />
       <Jumbotron>
           <h1 className="display-2">
             Hello, {this.props.location.state.firstName}

@@ -58,7 +58,7 @@ export const PatientRegistrationWrapper = styled.div`
     .alreadyRegistered{
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: baseline;
         font-family: "Ubuntu", sans-serif;
         font-size 12px;
     }
