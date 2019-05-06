@@ -14,6 +14,7 @@ import AddPatient from './components/UserViewPages/AddPatient';
 import UserPrivateRoute from "./components/UserPrivateRoute";
 import DocHomepage from "./components/UserViewPages/DocPage/DocHompage";
 import DocPatientView from "./components/UserViewPages/DocPage/DocPatientView";
+import PatientView from "./components/UserViewPages/PatientPage/PatientView";
 
 
 class App extends Component {
@@ -30,7 +31,7 @@ class App extends Component {
           <UserPrivateRoute path= "/patienthub" exact component={PatientContainer} />
           <UserPrivateRoute path= "/doctorhub" exact component={DocHomepage} />
           <UserPrivateRoute path= "/doctorhub/patients" exact component={DocPatientView} />
-
+          <UserPrivateRoute path= "/user/patients" exact component={PatientView} />
         </div>
       </Router>
     );
