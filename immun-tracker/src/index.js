@@ -25,8 +25,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //Redux Dev Tools 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ;
 
-const store = createStore(reducer,  
- composeEnhancers((applyMiddleware(thunk))));
+const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store = { store }>
