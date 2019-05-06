@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import img from './martin-brosy-758535-unsplash-min.jpg'
+
 
 
 export const DocNavbarWrapper = styled.div`
@@ -26,7 +26,7 @@ export const DocNavbarWrapper = styled.div`
 
 export const DocWrapper = styled.div`
   .jumbotron {
-    background-image: url(${img});
+ 
     background-color: #cccccc;
     background-position: center;
     background-attachment: fixed;
