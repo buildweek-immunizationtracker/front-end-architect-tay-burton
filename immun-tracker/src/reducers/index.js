@@ -135,7 +135,9 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingProviders: false,
-        providerList: [...this.providerList, ...action.payload]
+        providerList: [...action.payload] 
+        //[...this.providerList, ...action.payload] 
+        //why this no work doe
       };
     case GETPROVIDERLIST_FAILURE:
       return {
@@ -155,7 +157,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         givingAuthorization: false,
-        authorizedProviderList: [...this.authorizedProviderList, ...action.payload]
+        authorizedProviderList: [action.payload]
       };
     case CONSENT_REJECTED:
       return {

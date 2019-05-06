@@ -7,6 +7,7 @@ import {
 
 } from "reactstrap";
 
+import LinkToGrantAccessButton from '../../GrantAccess/LinkToGrantAccessButton'
 import { Patient } from "./PNavbarWrapper";
 import { connect } from "react-redux";
 // import { getImmunization, postImmunization } from "../../../actions/actions";
@@ -48,6 +49,11 @@ class DocPatient extends Component {
             </CardTitle>
             <CardText>Birthday: {this.props.patient.birthDate}</CardText>
             <CardText> ID: {this.props.patient.id}</CardText>
+            <LinkToGrantAccessButton 
+              patientId={this.props.patient.id} 
+              firstName={this.props.patient.firstName}
+              lastName={this.props.patient.lastName}>
+            </LinkToGrantAccessButton>
           </Card>
         </Patient>
       </div>

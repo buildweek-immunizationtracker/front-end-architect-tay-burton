@@ -27,7 +27,7 @@ class App extends Component {
           <Route path="/register-provider" exact component={MedicalRegistrationView} />
           <Route path = "/register-patient" exact component={PatientRegistrationView} />
           <UserPrivateRoute path="/addpatient" exact component={AddPatient} />
-          <UserPrivateRoute path = "/grant-access" exact component={GrantAccessView} />
+          <UserPrivateRoute path = "/grant-access/:patientId" exact component={GrantAccessView} />
           <UserPrivateRoute path= "/patienthub" exact component={PatientContainer} />
           <UserPrivateRoute path= "/doctorhub" exact component={DocHomepage} />
           <UserPrivateRoute path= "/doctorhub/patients" exact component={DocPatientView} />
