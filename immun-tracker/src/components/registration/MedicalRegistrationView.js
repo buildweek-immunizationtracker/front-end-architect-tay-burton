@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { MedicalRegistrationWrapper } from "./MedicalRegistrationWrapper";
 import { createProviderAccount } from '../../actions/registrationActions';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class MedicalRegistrationView extends React.Component {
     state = {
@@ -15,7 +15,8 @@ class MedicalRegistrationView extends React.Component {
         //verification:"", ex. licensure, 
         //providerID:""
         //mvp or strethc??
-      }
+      },
+      accountSubmitted: false
     };
   
     handleInput = e => {
@@ -30,14 +31,13 @@ class MedicalRegistrationView extends React.Component {
     handleSubmit = e => {
       e.preventDefault();
       this.props.createProviderAccount(this.state.credentials)
-          //  this.setState({
-          //     username:'',
-          //     password:"",
-          //     
-          // })
+      this.setState({ accountSubmitted:true })
     };
   
     render() {
+      if (this.state.accountSubmitted === true) {
+        return <Redirect to='/login' />
+      }
       return (
         <MedicalRegistrationWrapper>
         <div className="container">
