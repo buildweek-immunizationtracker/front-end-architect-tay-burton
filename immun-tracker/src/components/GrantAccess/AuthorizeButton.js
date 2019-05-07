@@ -17,7 +17,7 @@ class AuthorizeButton extends React.Component {
     const id = (Object.values(this.props.patientId).toString())
     e.preventDefault();
     this.setState({ authorizationGranted: true });
-    this.props.giveProviderConsent(id, this.props.providerId)
+    this.props.giveProviderConsent(id, this.props.providerId) 
     };
 
   render() {
