@@ -12,10 +12,10 @@ class DocFooter extends Component {
         
         <Nav>
           <NavItem>
-            <NavLink href="#">Home</NavLink>
+            <Link className='nav-link' to="/doctorhub">Home</Link>
           </NavItem>
           <NavItem>
-            <NavLink href="#">View Patients</NavLink>
+            <Link  className='nav-link' to={`/doctorhub/patients`}>View Patients</Link>
           </NavItem>
           <NavItem>
           <Link className='nav-link' onClick={this.logout} to='/login'> Logout </Link>

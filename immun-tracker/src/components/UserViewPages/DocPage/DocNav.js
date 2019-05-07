@@ -44,7 +44,7 @@ class DocNav extends Component {
       <Collapse isOpen={!this.state.collapsed} navbar>
         <Nav navbar>
           <NavItem>
-            <Link className='link' to="/components/">View Patients</Link>
+            <Link className='link' to={`/doctorhub/patients`}>View Patients</Link>
           </NavItem>
           <NavItem>
             <Link className='link' onClick={this.logout} to='/login'> Logout </Link>
