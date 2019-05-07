@@ -4,18 +4,21 @@ import { connect } from "react-redux";
 import { PatientRegistrationWrapper } from "./PatientRegistrationWrapper";
 import { createPatientAccount } from '../../actions/registrationActions'
 import { Link } from "react-router-dom"
+import { Redirect } from 'react-router-dom'
 
 class PatientRegistrationView extends React.Component {
     state = {
       credentials: {
         fullName: "",
         username: "",
+        email: "",
         password: "",
 
         //verification:"", ex. licensure, 
         //providerID:""
         //mvp or strethc??
-      }
+      },
+      accountSubmitted: false
     };
   
     handleInput = e => {
@@ -29,17 +32,18 @@ class PatientRegistrationView extends React.Component {
   
     handleSubmit = e => {
       e.preventDefault();
+      
       this.props.createPatientAccount(this.state.credentials)
-          //  this.setState({
-          //     username:'',
-          //     password:"",
-          //     
-          // })
+      this.setState({ accountSubmitted:true })
+          
     };
   
     
   
-    render() {
+    render() {  
+      if (this.state.accountSubmitted === true) {
+      return <Redirect to='/login' />
+    }
       return (
         <PatientRegistrationWrapper>
         <div className="container">
