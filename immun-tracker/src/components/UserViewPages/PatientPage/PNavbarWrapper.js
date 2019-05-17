@@ -23,6 +23,16 @@ export const PNavbarWrapper = styled.div`
 
 
 export const PatientWrapper = styled.div`
+   
+.loader{
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+
   .jumbotron {
     background-image: url("https://images.unsplash.com/photo-1477511614005-61bd8b91d218?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
     background-color: #cccccc;

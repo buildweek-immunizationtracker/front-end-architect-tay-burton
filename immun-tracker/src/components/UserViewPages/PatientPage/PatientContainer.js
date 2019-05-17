@@ -4,6 +4,8 @@ import PatientNav from "./PatientNav";
 import Footer from './PatientFooter'
 import { getData } from "../../../actions/actions";
 
+import Loader from "react-loader-spinner";
+
 //Redux
 import { connect } from "react-redux";
 
@@ -31,6 +33,14 @@ class PatientHome extends Component {
   render() {
     if (this.props.user.providerId  ) {
       return <Redirect to='/doctorhub' />
+    }
+
+    if(this.props.fetchingData){
+      return <PatientWrapper > 
+        <div className='loader'>
+        <Loader type="Ball-Triangle" color="#00BFFF" height="80" width="60" />
+        </div>
+        </PatientWrapper>
     }
     
     return (
