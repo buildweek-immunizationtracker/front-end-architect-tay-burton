@@ -6,6 +6,8 @@ import { getData } from "../../../actions/actions";
 
 import { Link } from "react-router-dom";
 
+import Loader from "react-loader-spinner";
+
 import {
     Jumbotron,
     Button,
@@ -25,7 +27,7 @@ import { Redirect } from "react-router-dom";
 
 
 class DocHompage extends Component {
-
+  
 
   componentDidMount() {
     this.props.getData();
@@ -34,6 +36,14 @@ class DocHompage extends Component {
     render() {
       if (!this.props.user.providerId ) {
         return <Redirect to='/patienthub' />
+      }
+      if(this.props.fetchingData){
+        return <DocWrapper>
+              <div className='loader'>
+        <Loader type="Ball-Triangle" color="#00BFFF" height="80" width="60" />
+        </div>
+        </DocWrapper>
+
       }
         return (
                 <DocWrapper>

@@ -2,17 +2,19 @@ import styled from 'styled-components';
 
 export const MedicalRegistrationWrapper = styled.div`
     .container{
+        width: 400px;
+        height: auto;
+        margin: 7em auto;
+        border-radius: 1.5em;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
         background-color: #ffffff;
-        
-        width: 600px;
-        height: 600px;
-        
-        margin: 3em auto;
-        border-radius: 1.5em;
         box-shadow: 0px 10px 20px 2px #4d4dff;
+        @media (max-width: 700px) {
+            width: auto;
+          }
     }
 
     .inputContainer{

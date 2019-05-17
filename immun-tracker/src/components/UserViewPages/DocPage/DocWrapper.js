@@ -25,6 +25,15 @@ export const DocNavbarWrapper = styled.div`
 `;
 
 export const DocWrapper = styled.div`
+
+.loader{
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
   .jumbotron {
     background-image: url("https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80");
     background-color: #cccccc;
