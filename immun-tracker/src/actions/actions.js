@@ -2,6 +2,7 @@ import axios from "axios";
 // LOG IN/OUT Actions
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_RESOLVED = "LOGIN_RESOLVED";
+export const LOGIN_ERROR = "LOGIN_ERROR";
 export const LOGOUT = 'LOGOUT';
 
 // Globals
@@ -22,7 +23,10 @@ export const login = creds => dispatch => {
       if (err.response.status === 403) {
         localStorage.removeItem("token");
       }
-      dispatch({ type: LOGIN_RESOLVED });
+      dispatch({ 
+        type: LOGIN_ERROR,
+        payload: err.toString()
+       });
     });
 };
 

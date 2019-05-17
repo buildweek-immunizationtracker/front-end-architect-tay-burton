@@ -58,6 +58,9 @@ class Login extends React.Component {
               {this.state.submitted && !this.state.credentials.username && (
                 <div className="help-block">Username is required</div>
               )}
+              {this.props.error &&(
+                <div className="help-block">Invalid Credentials </div>
+              )}
               <input
                 type="text"
                 name="username"
@@ -99,7 +102,7 @@ class Login extends React.Component {
 const mapStateToProps = state => {
   return {
     isLoggingIn: state.isLoggingIn,
-    
+    error: state.error
   };
 };
 
