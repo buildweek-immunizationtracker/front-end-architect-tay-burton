@@ -1,6 +1,7 @@
 import {
     LOGIN_START,
     LOGIN_RESOLVED,
+    LOGIN_ERROR,
     FETCH_DATA_START,
     FETCH_DATA_SUCCESS,
   
@@ -85,6 +86,12 @@ const userReducer = (state = initialState, action) => {
               ...state,
               isLoggingIn: false
             };
+          }
+          case LOGIN_ERROR: {
+            return {
+              ...state,
+               error: action.payload
+            }
           }
     /* --- Registration Actions --- */
     case ACCOUNTCREATE_START:
