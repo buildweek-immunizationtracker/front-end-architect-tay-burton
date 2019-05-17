@@ -1,3 +1,4 @@
+// added for IE11
 import 'babel-polyfill';
 
 //React
