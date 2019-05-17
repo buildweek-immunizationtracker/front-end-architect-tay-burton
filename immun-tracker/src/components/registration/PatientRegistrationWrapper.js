@@ -12,6 +12,9 @@ export const PatientRegistrationWrapper = styled.div`
         align-items: center;
         text-align: center;
         background-color: #ffffff;
+        @media (max-width: 700px) {
+            width: auto;
+          }
         
 
     .inputContainer{

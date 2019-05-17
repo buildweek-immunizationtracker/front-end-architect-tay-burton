@@ -12,6 +12,9 @@ export const MedicalRegistrationWrapper = styled.div`
         text-align: center;
         background-color: #ffffff;
         box-shadow: 0px 10px 20px 2px #4d4dff;
+        @media (max-width: 700px) {
+            width: auto;
+          }
     }
 
     .inputContainer{
