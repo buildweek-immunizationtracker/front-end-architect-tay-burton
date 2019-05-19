@@ -2,7 +2,7 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { Redirect } from "react-router-dom";
 
 import { giveProviderConsent } from  '../../actions/grantAccessActions'
 
@@ -21,6 +21,9 @@ class AuthorizeButton extends React.Component {
     };
 
   render() {
+    if (this.state.authorizationGranted  ) {
+      return <Redirect to='/patienthub' />
+    }
     // console.log(`this is the patient${this.props.match.params}`)
     console.log(Object.values(this.props.patientId).toString())
     return (
