@@ -8,4 +8,5 @@
   <li>Ability to add patients</li>
   <li>Ability to choose doctors</li>
   <li>Ability to give consent for update of immunizations</li>
+  <li>Ability for Doctors to preform CRUD operations on immunizations </li>
 </ul>
